@@ -1,0 +1,10 @@
+/* //////////////// */
+
+@media print {
+  #clickPrint {
+    visibility: hidden;
+  }
+  body * {
+    visibility: visible;
+  }
+}

@@ -1,0 +1,587 @@
+/*  =================================
+*   | Bài tập js buổi 5 - my CSS    |
+*   | Handler: Bùi Hữu Công         |
+*   =================================*/
+
+/* ===google fonts==== */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* 
+* Roboto: CSS classes:  
+    selector {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: <weight>;
+    }
+- roboto-thin -> font-weight: 100;
+- roboto-light -> font-weight: 300;
+- roboto-regular -> font-weight: 400;
+- roboto-medium -> font-weight: 500;
+- roboto-bold -> font-weight: 700;
+- roboto-black -> font-weight: 900;
+- roboto-thin -> font-weight: 100;
+- roboto-thin -> font-weight: 100;
+
+* Roboto Mono: CSS classes:  
+    selector {
+    font-family: "Roboto Mono", monospace;
+    font-style: normal;
+    font-weight: <weight>;
+    }
+- <weight>: Use a value from 100 to 700
+
+* Roboto Condensed: CSS classes:  
+    selector {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    }
+- <weight>: Use a value from 100 to 900
+
+* Oswald: CSS classes:  
+    selector {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    }
+- <weight>: Use a value from 100 to 700
+
+*/
+
+/* ===global css==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --orangeDark: #fe9e25;
+  --orangeMedium: #f7bd37;
+  --orangeLight: #fbec6b;
+  --orangeHover: var(--violetLight);
+  --orangeGradient: linear-gradient(
+    30deg,
+    var(--orangeLight) 0%,
+    var(--orangeMedium) 47%,
+    var(--orangeLight) 100%
+  );
+
+  --greenDark: #3bb03b;
+  --greenMedium: #96e33d;
+  --greenLight: #d3f390;
+  --greenHover: var(--orangeLight);
+  --greenGradient: linear-gradient(
+    30deg,
+    var(--greenLight) 0%,
+    var(--greenMedium) 47%,
+    var(--greenLight) 100%
+  );
+
+  --turquoiseDark: #0f798f;
+  --turquoiseMedium: #26a39b;
+  --turquoiseLight: #70ccbf;
+  --turquoiseHover: var(--greenLight);
+  --turquoiseGradient: linear-gradient(
+    30deg,
+    var(--turquoiseLight) 0%,
+    var(--turquoiseMedium) 47%,
+    var(--turquoiseLight) 100%
+  );
+
+  --blueDark: #047cea;
+  --blueMedium: #22bee7;
+  --blueLight: #75d8ef;
+  --blueHover: var(--turquoiseLight);
+  --blueGradient: linear-gradient(
+    30deg,
+    var(--blueLight) 0%,
+    var(--blueMedium) 47%,
+    var(--blueLight) 100%
+  );
+
+  --violetDark: #4f2b6b;
+  --violetMedium: #993b91;
+  --violetLight: #f055a8;
+  --violetHover: var(--blueMedium);
+  --violetGradient: linear-gradient(
+    30deg,
+    var(--violetLight) 0%,
+    var(--violetMedium) 47%,
+    var(--violetLight) 100%
+  );
+
+  --redDark: #ab0404;
+  --redMedium: #e81620;
+  --redLight: #ff5a5a;
+  --redHover: var(--violetMedium);
+  --redGradient: linear-gradient(
+    30deg,
+    var(--redLight) 0%,
+    var(--redMedium) 47%,
+    var(--redLight) 100%
+  );
+
+  --magentaDark: #c22664;
+  --magentaMedium: #e85082;
+  --magentaLight: #fabaa9;
+  --magentaHover: var(--violetLight);
+  --magentaGradient: linear-gradient(
+    30deg,
+    var(--magentaLight) 0%,
+    var(--magentaMedium) 47%,
+    var(--magentaLight) 100%
+  );
+
+  --carrotDark: #e9692c;
+  --carrotMedium: #e68246;
+  --carrotLight: #fad792;
+  --carrotHover: var(--magentaMedium);
+  --carrotGradient: linear-gradient(
+    30deg,
+    var(--carrotLight) 0%,
+    var(--carrotMedium) 47%,
+    var(--carrotLight) 100%
+  );
+  --grayLightColor: #f4f4f4;
+}
+/* define interface */
+.interface {
+  transition: all 0.5s;
+}
+.interface.orange {
+  color: var(--orangeDark) !important;
+}
+.interface.orange-bg {
+  background-color: var(--orangeDark) !important;
+}
+.interface.orange-bg:hover {
+  background-color: var(--orangeHover) !important;
+}
+.interface.orange-border {
+  border-color: var(--orangeMedium) !important;
+}
+.interface.orange-border:hover,
+.interface.orange-border:focus {
+  border-color: var(--orangeHover) !important;
+}
+
+.interface.green {
+  color: var(--greenDark) !important;
+}
+.interface.green-bg {
+  background-color: var(--greenDark) !important;
+}
+.interface.green-bg:hover {
+  background-color: var(--greenHover) !important;
+}
+.interface.green-border {
+  border-color: var(--greenMedium) !important;
+}
+.interface.green-border:hover,
+.interface.green-border:focus {
+  border-color: var(--greenHover) !important;
+}
+
+.interface.turquoise {
+  color: var(--turquoiseDark) !important;
+}
+.interface.turquoise-bg {
+  background-color: var(--turquoiseDark) !important;
+}
+.interface.turquoise-bg:hover {
+  background-color: var(--turquoiseHover) !important;
+}
+.interface.turquoise-border {
+  border-color: var(--turquoiseMedium) !important;
+}
+.interface.turquoise-border:hover,
+.interface.turquoise-border:focus {
+  border-color: var(--turquoiseHover) !important;
+}
+
+.interface.blue {
+  color: var(--blueDark) !important;
+}
+.interface.blue-bg {
+  background-color: var(--blueDark) !important;
+}
+.interface.blue-border {
+  border-color: var(--blueMedium) !important;
+}
+.interface.blue-bg:hover {
+  background-color: var(--blueHover) !important;
+}
+.interface.blue-border:hover,
+.interface.blue-border:focus {
+  border-color: var(--blueHover) !important;
+}
+
+.interface.violet {
+  color: var(--violetDark) !important;
+}
+.interface.violet-bg {
+  background-color: var(--violetDark) !important;
+}
+.interface.violet-bg:hover {
+  background-color: var(--violetHover) !important;
+}
+.interface.violet-border {
+  border-color: var(--violetMedium) !important;
+}
+.interface.violet-border:hover,
+.interface.violet-border:focus {
+  border-color: var(--violetHover) !important;
+}
+
+.interface.red {
+  color: var(--redDark) !important;
+}
+.interface.red-bg {
+  background-color: var(--redDark) !important;
+}
+.interface.red-bg:hover {
+  background-color: var(--redHover) !important;
+}
+.interface.red-border {
+  border-color: var(--redMedium) !important;
+}
+.interface.red-border:hover,
+.interface.red-border:focus {
+  border-color: var(--redHover) !important;
+}
+
+.interface.magenta {
+  color: var(--magentaDark) !important;
+}
+.interface.magenta-bg {
+  background-color: var(--magentaDark) !important;
+}
+.interface.magenta-bg:hover {
+  background-color: var(--magentaHover) !important;
+}
+.interface.magenta-border {
+  border-color: var(--magentaMedium) !important;
+}
+.interface.magenta-border:hover,
+.interface.magenta-border:focus {
+  border-color: var(--magentaHover) !important;
+}
+
+.interface.carrot {
+  color: var(--carrotDark) !important;
+}
+.interface.carrot-bg {
+  background-color: var(--carrotDark) !important;
+}
+.interface.carrot-bg:hover {
+  background-color: var(--carrotHover) !important;
+}
+.interface.carrot-border {
+  border-color: var(--carrotMedium) !important;
+}
+.interface.carrot-border:hover,
+.interface.carrot-border:focus {
+  border-color: var(--carrotHover) !important;
+}
+
+/* interface eof */
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: 1px solid rgba(200, 200, 200, 0);
+}
+::-webkit-scrollbar-track:hover {
+  background-color: transparent;
+  border: 1px solid rgba(200, 200, 200, 0);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  border: 4px solid rgba(255, 255, 255, 0);
+  background-clip: content-box;
+  background-color: var(--redDark);
+}
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 12px;
+  border: 4px solid rgba(255, 255, 255, 0);
+  background-clip: content-box;
+  background-color: var(--orangeMedium);
+}
+::-webkit-scrollbar-corner {
+  background-color: #444;
+}
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 15px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-bottom: 0.85rem;
+  font-weight: bold;
+}
+input {
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+input:hover,
+input:focus {
+  border: 1px dotted;
+  outline: none;
+  box-shadow: none;
+}
+input::placeholder {
+  font-size: 11px;
+  line-height: 40px;
+  transition: all 0.5s;
+}
+input:focus::placeholder {
+  padding-left: 20px;
+  opacity: 0.5;
+}
+button {
+  width: max-content;
+  height: max-content;
+  border-radius: 30px;
+}
+.bg-grayLight {
+  background-color: var(--grayLightColor);
+}
+.bg-gray {
+  background-color: #ddd;
+}
+.bg-gold {
+  background-color: #d5ae3a;
+}
+.text-gold {
+  color: #d5ae3a;
+}
+.text-bold {
+  font-weight: bold !important;
+}
+.fs-20px {
+  font-size: 20px !important;
+}
+.readNumber {
+  display: inline-block;
+  text-transform: lowercase;
+}
+.readNumber:first-letter {
+  text-transform: uppercase;
+}
+
+/* ==========end global======= */
+
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.inputGroup {
+  margin-bottom: 10px;
+}
+.inputGroup label {
+  display: block;
+  margin-bottom: 5px;
+}
+.inputGroup input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.resultGroup {
+  margin-top: 20px;
+}
+.resultGroup div {
+  margin-bottom: 10px;
+}
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+.buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+}
+/* ================ */
+.leftSide,
+.rightSide,
+.middleSide {
+  height: 95vh;
+  overflow: auto;
+}
+
+#v-pills-tab button {
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: left;
+  font-size: 16px;
+  border: 1px dotted var(--redDark);
+  text-transform: uppercase;
+  font-weight: 700;
+  height: 50px;
+  padding-left: 50px;
+  margin-bottom: 20px;
+  position: relative;
+  margin-left: 20px;
+  margin-right: 10px;
+  border-radius: 25px;
+  color: var(--redDark);
+  transition: all 0.5s;
+  width: fit-content;
+}
+#v-pills-tab button:last-child {
+  margin-bottom: 0;
+}
+#v-pills-tab button.active {
+  width: 100%;
+  color: var(--grayLightColor);
+  background: linear-gradient(
+    to right,
+    var(--redLight) 0%,
+    var(--redDark) 100%
+  );
+}
+#v-pills-tab button i {
+  position: absolute;
+  left: -20px;
+  top: -5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 60px;
+  text-align: center;
+  color: var(--grayLightColor);
+  background-image: radial-gradient(
+    circle,
+    var(--redDark) 0%,
+    var(--redLight) 100%
+  );
+}
+/* table hóa đơn */
+.inBill {
+  font-size: 15px;
+  padding: 5px;
+  margin: 0 auto;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+table#billTienDien {
+  /* width: 80%; */
+  margin: 0 auto;
+  border: 2px solid #333;
+  color: #333;
+  font-family: serif;
+}
+th,
+td {
+  padding: 5px 7px;
+}
+thead tr,
+tbody tr,
+tfoot tr {
+  border-bottom: 1px dotted #333;
+}
+thead tr,
+tbody tr:last-child,
+tfoot tr:last-child {
+  border-bottom-style: solid;
+}
+
+table#billTienDien tr th:nth-child(2),
+table#billTienDien tr td:nth-child(2) {
+  text-align: center;
+}
+table#billTienDien tr td:nth-child(3),
+table#billTienDien tr td:nth-child(4),
+table#billTienDien tr th:nth-child(3),
+table#billTienDien tr th:nth-child(4),
+.text-right,
+table#billTienDien tr.text-right td,
+table#billTienDien tr.text-right th {
+  text-align: right;
+}
+.text-left,
+table#billTienDien tr .text-left th,
+table#billTienDien tr .text-left td {
+  text-align: left;
+}
+
+#btnPrintBill {
+  display: none;
+}
+
+/* ====================| CSS responsive |================= */
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media screen and (max-width: 1399.98px) {
+  .inBill {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media screen and (max-width: 1199.98px) {
+  .inBill {
+    font-size: 13px;
+    width: 100%;
+  }
+}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media screen and (max-width: 991.98px) {
+  .leftSide {
+    height: max-content;
+    overflow: unset;
+  }
+  #v-pills-tab button {
+    width: max-content;
+  }
+  #v-pills-tab button.active {
+    width: max-content;
+  }
+  .inBill {
+    font-size: 12px;
+    width: 100%;
+  }
+}
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media screen and (max-width: 767.98px) {
+  .rightSide,
+  .middleSide {
+    height: max-content;
+    overflow: unset;
+    margin: 15px auto;
+  }
+  .inBill {
+    font-size: 15px;
+    width: 90%;
+  }
+}
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media screen and (max-width: 575.98px) {
+}
+/* fix to xx-small devices */
+@media screen and (max-width: 500px) {
+  .inBill {
+    font-size: 12px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 328px) {
+}
+/* ==================| end CSS responsive |=============== */

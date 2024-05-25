@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bà tập js buổi 5</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- font-awesome 6.5.1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- my CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body class="bg-grayLight">
+    <div class="container-fluid">
+      <div class="row py-3">
+        <!-- left side -->
+        <div
+          class="col-lg-3 mb-3 mb-lg-0 leftSide d-flex justify-content-center align-items-center"
+        >
+          <div
+            class="nav flex-row flex-lg-column justify-content-center nav-pills me-3"
+            id="v-pills-tab"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            <button
+              class="nav-link"
+              id="v-pills-home-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-home"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-home"
+              aria-selected="true"
+            >
+              <i class="fa-solid fa-graduation-cap"></i>
+              Quản lý tuyển sinh
+            </button>
+
+            <button
+              class="nav-link active"
+              id="v-pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-profile"
+              aria-selected="false"
+            >
+              <i class="fa-solid fa-plug"></i>
+              Tính tiền điện
+            </button>
+
+            <button
+              class="nav-link"
+              id="v-pills-messages-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-messages"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-messages"
+              aria-selected="false"
+            >
+              <i class="fa-solid fa-sack-dollar"></i>
+              Tính thuế TNCN
+            </button>
+
+            <button
+              class="nav-link"
+              id="v-pills-settings-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-settings"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-settings"
+              aria-selected="false"
+            >
+              <i class="fa-solid fa-network-wired"></i>
+              Tính tiền cáp
+            </button>
+          </div>
+        </div>
+
+        <!-- midle side -->
+        <div
+          class="col-lg-5 col-md-7 mb-3 mb-md-0 middleSide d-md-flex justify-content-md-center align-items-md-center"
+        >
+          <div class="tab-content" id="v-pills-tabContent">
+            <!-- tab#1 -->
+            <div
+              class="tab-pane fade"
+              id="v-pills-home"
+              role="tabpanel"
+              aria-labelledby="v-pills-home-tab"
+              tabindex="0"
+            >
+              Bài tập 1
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Suscipit dolores eius qui ut reprehenderit neque itaque co alias
+                perspiciatis nesciunt atque numquam est, nisi commodi deleniti!
+                Placeat veniam possimus maiores facilis molrum fugit illo
+                deleniti ipsam soluta obcat, expedita dicta illo tenetur, eos
+                consectetur dolor iusto quod!
+              </p>
+            </div>
+
+            <!-- tab#2 -->
+            <div
+              class="tab-pane fade show active"
+              id="v-pills-profile"
+              role="tabpanel"
+              aria-labelledby="v-pills-profile-tab"
+              tabindex="0"
+            >
+              <div class="container py-3">
+                <h3 class="text-center py-2 interface green">
+                  Chương trình Tính Tiền Điện
+                </h3>
+                <div class="row">
+                  <div class="inputGroup col-md-6">
+                    <label for="tenKhachHang">Tên khách hàng:</label>
+                    <input
+                      class="interface text-dark green-border"
+                      type="text"
+                      id="tenKhachHang"
+                      placeholder="Nhập tên khách hàng"
+                      value="Bùi Hữu Công"
+                    />
+                  </div>
+                  <div class="inputGroup col-md-6">
+                    <label for="phone">Số điện thoại:</label>
+                    <input
+                      class="interface text-dark green-border"
+                      type="text"
+                      id="phone"
+                      placeholder="Nhập số điện thoại"
+                      value="0123 456 789"
+                    />
+                  </div>
+                  <div class="inputGroup col-12">
+                    <label for="address">Địa chỉ:</label>
+                    <input
+                      class="interface text-dark green-border"
+                      type="text"
+                      id="address"
+                      placeholder="Nhập địa chỉ"
+                      value="112 Cao Thắng, Quận 3, TPHCM"
+                    />
+                  </div>
+
+                  <div class="inputGroup col-md-6 mt-md-3">
+                    <label for="chiSoCu">Chỉ số điện cũ:</label>
+                    <input
+                      class="interface text-dark green-border"
+                      type="number"
+                      id="chiSoCu"
+                      placeholder="Nhập chỉ số điện cũ"
+                    />
+                  </div>
+                  <div class="inputGroup col-md-6 mt-md-3">
+                    <label for="chiSoMoi">Chỉ số điện mới:</label>
+                    <input
+                      class="interface red green-border"
+                      type="number"
+                      id="chiSoMoi"
+                      placeholder="Nhập chỉ số điện mới"
+                    />
+                  </div>
+                </div>
+                <div class="resultGroup">
+                  <div>
+                    Số điện tiêu thụ:
+                    <span id="soDienTieuThu">0</span> kWh
+                  </div>
+                  <div>Thành tiền: <span id="thanhTien">0</span> VND</div>
+                  <div>Thuế VAT (10%): <span id="vat">0</span> VND</div>
+                  <div>
+                    Tổng tiền phải trả: <span id="tongThanhToan">0</span> VND
+                  </div>
+                </div>
+                <div class="buttons">
+                  <button
+                    class="interface green-bg text-light border-0"
+                    id="btnTinhTien"
+                  >
+                    Tính Tiền
+                  </button>
+                  <button
+                    class="interface green-bg text-light border-0"
+                    id="resetButton"
+                  >
+                    Xóa form
+                  </button>
+                  <button
+                    class="interface green-bg text-light border-0"
+                    id="btnPrintBill"
+                  >
+                    In Phiếu
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- tab#3 -->
+            <div
+              class="tab-pane fade"
+              id="v-pills-messages"
+              role="tabpanel"
+              aria-labelledby="v-pills-messages-tab"
+              tabindex="0"
+            >
+              Bài tập 3
+            </div>
+
+            <!-- tab#4 -->
+            <div
+              class="tab-pane fade"
+              id="v-pills-settings"
+              role="tabpanel"
+              aria-labelledby="v-pills-settings-tab"
+              tabindex="0"
+            >
+              Bài tập 4
+            </div>
+          </div>
+        </div>
+
+        <!-- right side -->
+        <div
+          class="col-lg-4 col-md-5 rightSide d-md-flex justify-content-md-center align-items-md-center"
+        >
+          <div class="inBill">
+            <table id="billTienDien" class="">
+              <thead>
+                <tr>
+                  <td colspan="4" class="px-2">
+                    <h3 class="text-center m-0 py-3">HÓA ĐƠN TIỀN ĐIỆN</h3>
+                    <p>
+                      - Khách hàng: <strong>XXX</strong> - Điện thoại:
+                      <strong>xxx xxx xxx</strong><br />
+                      - Địa chỉ: xxxxxxxxxxxxx<br />
+                      - Chỉ số cũ: ## kwh<br />
+                      - Chỉ số mới: ### kwh<br />
+                      - Tổng số điện tiêu thụ: ## kwh
+                    </p>
+                  </td>
+                </tr>
+                <tr class="bg-gray">
+                  <th>Theo bậc thang</th>
+                  <th>Sử dụng</th>
+                  <th>Đơn giá</th>
+                  <th>Thành tiền</th>
+                </tr>
+              </thead>
+
+              <tbody id="billBodyTbl">
+                <tr>
+                  <td>Bậc 1: từ 0 - 50 <small>kwh</small></td>
+                  <td>xxx <small>kwh</small></td>
+                  <td>500 <small>đ/kwh</small></td>
+                  <td>###&nbsp;₫</td>
+                </tr>
+                <tr>
+                  <td>Bậc 2: từ 51 - 100 <small>kwh</small></td>
+                  <td>xxx <small>kwh</small></td>
+                  <td>650 <small>đ/kwh</small></td>
+                  <td>###&nbsp;₫</td>
+                </tr>
+                <tr>
+                  <td>Bậc 3: từ 101 - 200 <small>kwh</small></td>
+                  <td>xxx <small>kwh</small></td>
+                  <td>850 <small>đ/kwh</small></td>
+                  <td>###&nbsp;₫</td>
+                </tr>
+                <tr>
+                  <td>Bậc 4: từ 201 - 350 <small>kwh</small></td>
+                  <td>xxx <small>kwh</small></td>
+                  <td>1.100 <small>đ/kwh</small></td>
+                  <td>###&nbsp;₫</td>
+                </tr>
+                <tr>
+                  <td>Bậc 5: trên 350 <small>kwh</small></td>
+                  <td>xxx <small>kwh</small></td>
+                  <td>1.300 <small>đ/kwh</small></td>
+                  <td>###&nbsp;₫</td>
+                </tr>
+              </tbody>
+
+              <tfoot class="bg-gray">
+                <tr class="text-right">
+                  <td colspan="2" rowspan="3" style="text-align: left">
+                    <strong>Tổng TT (viết bằng chữ):</strong><br />
+                    <em class="readNumber"
+                      >Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Recusandae, cum.</em
+                    >
+                  </td>
+                  <td class="text-bold">Tổng tiền</td>
+                  <td class="text-bold billTongTien">xxx.000&nbsp;₫</td>
+                </tr>
+                <tr class="text-right text-bold">
+                  <td>Thuế VAT (10%)</td>
+                  <td class="billThueVat">xx.000&nbsp;₫</td>
+                </tr>
+                <tr class="text-right text-bold">
+                  <td>Tổng thanh toán</td>
+                  <td class="billTongThanhToan">xxxx.000&nbsp;₫</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
