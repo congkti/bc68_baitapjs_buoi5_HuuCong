@@ -529,8 +529,8 @@ function printContent(contentSelector) {
  *
  */
 // cập nhật số tiền hàng tháng cho bản thân và người phụ thuộc (đvt: triệu đồng)
-const TIEN_CHO_CA_NHAN = 11;
-const TIEN_CHO_NGUOI_PHU_THUOC = 3;
+const TIEN_CHO_CA_NHAN = 4;
+const TIEN_CHO_NGUOI_PHU_THUOC = 1.6;
 
 // cập nhật MAX thu nhập chịu thuế theo theo bậc quy định (đvt: triệu đồng)
 const MAX_BAC1 = 60; // = Min Bậc 2
