@@ -732,7 +732,7 @@ document.getElementById("btnXoaFormBaiTap3").addEventListener("click", () => {
  */
 const NHA_DAN = "nhaDan";
 const DOANH_NGHIEP = "doanhNghiep";
-const VAT_CAP = 10; //thuế VAT (%)
+const VAT_CAP = 8; //thuế VAT (%)
 
 const phiXuLyHoaDon = (loaiKhach) => {
   switch (loaiKhach) {
@@ -846,7 +846,7 @@ function tinhTienCap() {
         Tổng phí dịch vụ cơ bản: ${usd(tienPhiDichVuCB)} <br />
         Tổng tiền thuê kênh cao cấp: ${usd(tienThueKenhCC)} <br />
         <strong>Tổng tiền cáp: ${usd(tongTienCap)}</strong><br />
-        VAT (10%): ${usd((tongTienCap * VAT_CAP) / 100)}
+        VAT (${VAT_CAP}%): ${usd((tongTienCap * VAT_CAP) / 100)}
       </p>
   `
   );
