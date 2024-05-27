@@ -385,7 +385,8 @@ input[type="radio"] ~ label {
   margin: 0 auto;
   vertical-align: middle;
 }
-label {
+label,
+button {
   user-select: none;
 }
 input[type="radio"][class*="-bg"] {
@@ -398,6 +399,11 @@ input[type="radio"]:hover,
 input[type="radio"]:focus {
   /* border-style: solid !important; */
   border: none !important;
+}
+input[type="radio"]:hover ~ label,
+input[type="radio"]:focus ~ label,
+input[type="radio"]:checked ~ label {
+  color: var(--magentaMedium);
 }
 input:focus::placeholder {
   padding-left: 20px;
@@ -560,7 +566,8 @@ button {
   font-size: 13px;
   line-height: 14px;
 }
-table#billTienDien {
+table#billTienDien,
+table#billTienCap {
   /* width: 80%; */
   margin: 0 auto;
   border: 2px solid #333;
@@ -602,8 +609,8 @@ table#billTienDien tr .text-left td {
 }
 
 #btnPrintBill,
-.rightSide .inBill,
 #rsBai1,
+#rsBai2,
 #rsBai3,
 #rsBai4 {
   display: none;

@@ -39,10 +39,22 @@ function vnd(num) {
     currency: "VND",
   }));
 }
+// hàm format tiền USD
+function usd(num) {
+  return (num = num.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  }));
+}
 // format vn number
 function vnNum(num) {
   return (num = num.toLocaleString("vi-VN"));
 }
+// format us number
+function usNum(num) {
+  return (num = num.toLocaleString("en-US"));
+}
+// Nhập nội dung vô selector
 function nhapBill(idNhap, NoiDungNhap) {
   document.getElementById(idNhap).innerHTML = NoiDungNhap;
 }
@@ -688,10 +700,215 @@ document.getElementById("btnXoaFormBaiTap3").addEventListener("click", () => {
  *   Sơ đồ 3 khối
  *
  * 1. Đầu vào:
+ * - Người dùng nhập vào Mã Khách Hàng, Tên Khách Hàng, Số kênh cao cấp, loại khách hàng
+ * - Nếu là loại khách hàng là Doanh nghiệp thì sẽ nhập thêm Số kết nối.
  *
  *
  * 2. Xử lý:
+ * - DOM tới selector loại khách hàng để lấy thông tin Loại khách hàng:
+ *   + Nếu là Doanh nghiệp: sẽ cho input số kết nối hiện lên để nhập
+ *   + Nếu là Nhà dân: sẽ ẩn hoặc disabled input Số kết nối
+ * - DOM tới selector nút tính tiền -> gán sự kiện click
+ * - DOM tới các selector liên quan để lấy dữ liệu: Mã Khách hang, Tên KH, Loại LH, Số kênh cao cấp, Số kết nối.
+ * - Xử lý dữ liệu:
+ *   + Loại khách hàng: bắt buộc phải nhập mới tính toán
+ *   + Số kết nối và số kênh là Number > 0
+ *   + Mã Khách hàng + Tên khách hàng => Nhập để in bill
+ * - Tính tiền cho loại KH là Nhà dân:
+ *   + Phí xử lý hóa đơn = 4.5$
+ *   + Phí dịch vụ cơ bản = 20.5$
+ *   + Thuê kênh cao cấp = Số kênh x 7.5$/kênh
+ * - Tính tiền cho loại KH là Doanh nghiệp:
+ *   + Phí xử lý hóa đơn = 15$
+ *   + Phí dịch vụ cơ bản = 75$ + (Tổng số kết nối - 10) x 5$ / 1 kết nối
+ *      (75$ cho 10 kết nối đầu, mỗi kết nối thêm 5$/1 kết nối)
+ *   + Thuê kênh cao cấp = Số kênh x 50$/kênh
+ * => Tổng tiền = phí xử lý HĐ + Phí DV CB + chi phí thuê kênh
  *
  *
  * 3. Đầu ra:
+ * - Hiển thị kết quả số tiền của khách hàng lên giao diện
+ *
  */
+const NHA_DAN = "nhaDan";
+const DOANH_NGHIEP = "doanhNghiep";
+const VAT_CAP = 10; //thuế VAT (%)
+
+const phiXuLyHoaDon = (loaiKhach) => {
+  switch (loaiKhach) {
+    case NHA_DAN:
+      return 4.5; //$4.5
+    case DOANH_NGHIEP:
+      return 15;
+  }
+};
+
+const giaThueKenh = (loaiKhach) => {
+  switch (loaiKhach) {
+    case NHA_DAN:
+      return 7.5; //  $7.5/kênh
+    case DOANH_NGHIEP:
+      return 50;
+  }
+};
+
+const giaDichVuCB = (loaiKhach) => {
+  switch (loaiKhach) {
+    case NHA_DAN:
+      return 0;
+    case DOANH_NGHIEP:
+      return 5; // $5/kết nối - giá cho kết nối thứ 11 trở đi
+  }
+};
+
+let ipNhaDan = document.getElementById("khCaNhan");
+let ipDoanhNghiep = document.getElementById("khDoanhNghiep");
+let ipMaKhachHang = document.getElementById("capMaKhachHang");
+let ipTenKhachhang = document.getElementById("capTenKhachHang");
+let ipSoKenhCaoCap = document.getElementById("capSoKenhCC");
+let ipSoKetNoi = document.getElementById("capSoKetNoi");
+let ipBtnTinhTienCap = document.getElementById("btnTinhTienCap");
+let ipBtnXoaBai4 = document.getElementById("btnXoaFormBaiTap4");
+let ipBtnInBillCap = document.getElementById("btnInBillTienCap");
+// kiểm tra đầu vào
+function kiemTraFormCap() {
+  if (!ipNhaDan.checked && !ipDoanhNghiep.checked) {
+    alert("Chọn loại loại khách hàng!");
+    return false;
+  } else {
+    if (
+      ipDoanhNghiep.checked &&
+      (ipSoKetNoi.value <= 0 || ipSoKenhCaoCap.value <= 0)
+    ) {
+      alert("Vui lòng nhập Số kênh cao cấp và Số kết nối!");
+      ipSoKenhCaoCap.focus();
+      return false;
+    } else {
+      if (ipNhaDan.checked && ipSoKenhCaoCap.value <= 0) {
+        alert("Vui lòng nhập Số kênh cao cấp!");
+        ipSoKenhCaoCap.focus();
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+}
+
+ipNhaDan.onchange = () => {
+  ipSoKetNoi.value = "";
+  ipSoKetNoi.placeholder = "Không nhập! Chỉ dành cho doanh nghiệp";
+  ipSoKetNoi.disabled = true;
+};
+ipDoanhNghiep.onchange = () => {
+  ipSoKetNoi.placeholder = "nhập số kết nối...";
+  ipSoKetNoi.disabled = false;
+};
+
+// tính tiền
+function tinhTienCap() {
+  hideElement("#rsBai4");
+  let selLoaiKhach = document.querySelector(
+    '#frmBaiTap4 input[type="radio"]:checked'
+  ).value;
+  // console.log(selLoaiKhach);
+  let tienPhiXuLyHoaDon = phiXuLyHoaDon(selLoaiKhach);
+  let tienThueKenhCC = ipSoKenhCaoCap.value * giaThueKenh(selLoaiKhach);
+  let tienPhiDichVuCB = 0;
+  if (selLoaiKhach == NHA_DAN) {
+    tienPhiDichVuCB = 20.5;
+  } else if (selLoaiKhach == DOANH_NGHIEP && ipSoKetNoi.value * 1 > 10) {
+    tienPhiDichVuCB = 75 + (ipSoKetNoi.value * 1 - 10) * 5;
+  } else {
+    tienPhiDichVuCB = 75;
+  }
+  // console.log(tienPhiDichVuCB);
+  let tongTienCap = tienPhiXuLyHoaDon + tienPhiDichVuCB + tienThueKenhCC;
+  let tongThanhToanCap = tongTienCap + (tongTienCap * VAT_CAP) / 100;
+
+  // nhập dữ liệu
+  nhapBill(
+    "rsBai4",
+    `
+      <p class="mb-3 text-center">
+        Chào khách hàng <strong>${ipTenKhachhang.value}</strong>!
+        <small> &nbsp; &nbsp;Mã số KH: <strong>${
+          ipMaKhachHang.value
+        }</strong></small
+        ><br />
+        Tổng tiền thanh toán dịch vụ cáp internet của quý khách là:
+      </p>
+      <h4 class="text-center interface carrot carrot-border">
+        ${usd(tongThanhToanCap)}
+      </h4>
+      <p class="text-center mt-4">
+        Tổng phí xử lý hóa đơn: ${usd(tienPhiXuLyHoaDon)} <br />
+        Tổng phí dịch vụ cơ bản: ${usd(tienPhiDichVuCB)} <br />
+        Tổng tiền thuê kênh cao cấp: ${usd(tienThueKenhCC)} <br />
+        <strong>Tổng tiền cáp: ${usd(tongTienCap)}</strong><br />
+        VAT (10%): ${usd((tongTienCap * VAT_CAP) / 100)}
+      </p>
+  `
+  );
+}
+
+ipBtnTinhTienCap.onclick = () => {
+  hideElement("#rsBai4");
+  let check = kiemTraFormCap();
+
+  if (check) {
+    let confirm = checkTenVaMaKhachHang();
+    // console.log(check, confirm);
+    if (confirm) {
+      tinhTienCap();
+      showBlock("#rsBai4");
+    } else {
+    }
+  } //eof {check}
+};
+ipBtnXoaBai4.onclick = () => {
+  ipSoKetNoi.placeholder = "";
+  ipSoKetNoi.disabled = true;
+  hideElement("#rsBai4");
+};
+
+function checkTenVaMaKhachHang() {
+  if (!ipMaKhachHang.value || !ipTenKhachhang.value) {
+    if (
+      confirm("Chưa nhập Tên và Mã khách hàng. Bạn có muốn tiếp tục không?") ==
+      false
+    ) {
+      ipMaKhachHang.focus();
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return true;
+  }
+}
+
+document.getElementById("v-pills-baitap1-tab").onclick = () => {
+  hideElement("#rsBai1");
+  hideElement("#rsBai2");
+  hideElement("#rsBai3");
+  hideElement("#rsBai4");
+};
+document.getElementById("v-pills-baitap2-tab").onclick = () => {
+  hideElement("#rsBai1");
+  hideElement("#rsBai2");
+  hideElement("#rsBai3");
+  hideElement("#rsBai4");
+};
+document.getElementById("v-pills-baitap3-tab").onclick = () => {
+  hideElement("#rsBai1");
+  hideElement("#rsBai2");
+  hideElement("#rsBai3");
+  hideElement("#rsBai4");
+};
+document.getElementById("v-pills-baitap4-tab").onclick = () => {
+  hideElement("#rsBai1");
+  hideElement("#rsBai2");
+  hideElement("#rsBai3");
+  hideElement("#rsBai4");
+};
