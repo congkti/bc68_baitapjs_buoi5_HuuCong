@@ -42,13 +42,13 @@
             aria-orientation="vertical"
           >
             <button
-              class="nav-link"
-              id="v-pills-home-tab"
+              class="nav-link active"
+              id="v-pills-baitap1-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
+              data-bs-target="#v-pills-baitap1"
               type="button"
               role="tab"
-              aria-controls="v-pills-home"
+              aria-controls="v-pills-baitap1"
               aria-selected="true"
             >
               <i class="fa-solid fa-graduation-cap"></i>
@@ -56,13 +56,13 @@
             </button>
 
             <button
-              class="nav-link active"
-              id="v-pills-profile-tab"
+              class="nav-link"
+              id="v-pills-baitap2-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
+              data-bs-target="#v-pills-baitap2"
               type="button"
               role="tab"
-              aria-controls="v-pills-profile"
+              aria-controls="v-pills-baitap2"
               aria-selected="false"
             >
               <i class="fa-solid fa-plug"></i>
@@ -71,12 +71,12 @@
 
             <button
               class="nav-link"
-              id="v-pills-messages-tab"
+              id="v-pills-baitap3-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-messages"
+              data-bs-target="#v-pills-baitap3"
               type="button"
               role="tab"
-              aria-controls="v-pills-messages"
+              aria-controls="v-pills-baitap3"
               aria-selected="false"
             >
               <i class="fa-solid fa-sack-dollar"></i>
@@ -85,12 +85,12 @@
 
             <button
               class="nav-link"
-              id="v-pills-settings-tab"
+              id="v-pills-baitap4-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
+              data-bs-target="#v-pills-baitap4"
               type="button"
               role="tab"
-              aria-controls="v-pills-settings"
+              aria-controls="v-pills-baitap4"
               aria-selected="false"
             >
               <i class="fa-solid fa-network-wired"></i>
@@ -106,29 +106,124 @@
           <div class="tab-content" id="v-pills-tabContent">
             <!-- tab#1 -->
             <div
-              class="tab-pane fade"
-              id="v-pills-home"
+              class="tab-pane fade show active"
+              id="v-pills-baitap1"
               role="tabpanel"
-              aria-labelledby="v-pills-home-tab"
+              aria-labelledby="v-pills-baitap1-tab"
               tabindex="0"
             >
-              Bài tập 1
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Suscipit dolores eius qui ut reprehenderit neque itaque co alias
-                perspiciatis nesciunt atque numquam est, nisi commodi deleniti!
-                Placeat veniam possimus maiores facilis molrum fugit illo
-                deleniti ipsam soluta obcat, expedita dicta illo tenetur, eos
-                consectetur dolor iusto quod!
-              </p>
+              <div class="container py-3">
+                <h3 class="text-center py-2 interface blue">
+                  Chương trình quản lý tuyển sinh
+                </h3>
+                <form action="">
+                  <div class="row">
+                    <div class="inputGroup col-12 mb-4">
+                      <label for="diemChuan"
+                        >Điểm chuẩn của hội đồng thi:</label
+                      >
+                      <input
+                        class="interface blue-border red fw-bold"
+                        type="number"
+                        id="diemChuan"
+                        placeholder="nhập điểm chuẩn mới"
+                        value="28"
+                      />
+                    </div>
+                    <div class="diemThiGroup col-md-6">
+                      <div class="inputGroup">
+                        <label for="diemThi1">Điểm thi môn thứ nhất:</label>
+                        <input
+                          class="interface blue-border text-dark"
+                          type="number"
+                          id="diemThi1"
+                          placeholder="nhập điểm môn thứ nhất..."
+                        />
+                      </div>
+                      <div class="inputGroup">
+                        <label for="diemThi2">Điểm thi môn thứ hai:</label>
+                        <input
+                          class="interface blue-border text-dark"
+                          type="number"
+                          id="diemThi2"
+                          placeholder="nhập điểm môn thứ hai..."
+                        />
+                      </div>
+                      <div class="inputGroup">
+                        <label for="diemThi3">Điểm thi môn thứ ba:</label>
+                        <input
+                          class="interface blue-border text-dark"
+                          type="number"
+                          id="diemThi3"
+                          placeholder="nhập điểm môn thứ ba..."
+                        />
+                      </div>
+                    </div>
+
+                    <div class="uuTienGroup col-md-6">
+                      <div class="inputGroup mb-3">
+                        <label for="khuVucUuTien" class="form-label"
+                          >Chọn khu vực ưu tiên:</label
+                        >
+                        <select
+                          class="form-select interface blue-border text-gray5"
+                          name="khuVucUuTien"
+                          id="khuVucUuTien"
+                        >
+                          <option selected value="kv0">
+                            --Không ưu tiên--
+                          </option>
+                          <option value="kvA">Khu vực ưu tiên A</option>
+                          <option value="kvB">Khu vực ưu tiên B</option>
+                          <option value="kvC">Khu vực ưu tiên C</option>
+                        </select>
+                      </div>
+
+                      <div class="inputGroup mb-3">
+                        <label for="doiTuongUuTien" class="form-label"
+                          >Chọn đối tượng ưu tiên:</label
+                        >
+                        <select
+                          class="form-select interface blue-border"
+                          name="doiTuongUuTien"
+                          id="doiTuongUuTien"
+                        >
+                          <option selected value="dt0">
+                            --Không ưu tiên--
+                          </option>
+                          <option value="dtI">Đối tượng ưu tiên I</option>
+                          <option value="dtII">Đối tượng ưu tiên II</option>
+                          <option value="dtIII">Đối tượng ưu tiên III</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="buttons">
+                      <button
+                        type="button"
+                        class="interface blue-bg text-light border-0"
+                        id="btnKetQuaThi"
+                      >
+                        Kết quả
+                      </button>
+                      <button
+                        type="reset"
+                        class="interface blue-bg text-light border-0"
+                        id="btnXoaFormBaiTap1"
+                      >
+                        Xóa form
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
 
             <!-- tab#2 -->
             <div
-              class="tab-pane fade show active"
-              id="v-pills-profile"
+              class="tab-pane fade"
+              id="v-pills-baitap2"
               role="tabpanel"
-              aria-labelledby="v-pills-profile-tab"
+              aria-labelledby="v-pills-baitap2-tab"
               tabindex="0"
             >
               <div class="container py-3">
@@ -191,10 +286,10 @@
                     Số điện tiêu thụ:
                     <span id="soDienTieuThu">0</span> kWh
                   </div>
-                  <div>Thành tiền: <span id="thanhTien">0</span> VND</div>
-                  <div>Thuế VAT (10%): <span id="vat">0</span> VND</div>
+                  <div>Thành tiền: <span id="thanhTien">0</span></div>
+                  <div>Thuế VAT (10%): <span id="vat">0</span></div>
                   <div>
-                    Tổng tiền phải trả: <span id="tongThanhToan">0</span> VND
+                    Tổng tiền phải trả: <span id="tongThanhToan">0</span>
                   </div>
                 </div>
                 <div class="buttons">
@@ -206,7 +301,7 @@
                   </button>
                   <button
                     class="interface green-bg text-light border-0"
-                    id="resetButton"
+                    id="btnResetBai2"
                   >
                     Xóa form
                   </button>
@@ -223,23 +318,184 @@
             <!-- tab#3 -->
             <div
               class="tab-pane fade"
-              id="v-pills-messages"
+              id="v-pills-baitap3"
               role="tabpanel"
-              aria-labelledby="v-pills-messages-tab"
+              aria-labelledby="v-pills-baitap3-tab"
               tabindex="0"
             >
-              Bài tập 3
+              <div class="container py-3">
+                <h3 class="text-center py-2 interface magenta">
+                  Tính thuế thu nhập cá nhân
+                </h3>
+                <form action="">
+                  <div class="row">
+                    <div class="inputGroup col-md-6">
+                      <label for="tncnHoTen">Họ tên người đóng thuế:</label>
+                      <input
+                        class="interface magenta-border text-dark"
+                        type="text"
+                        id="tncnHoTen"
+                        placeholder="nhập họ tên..."
+                      />
+                    </div>
+
+                    <div class="inputGroup col-md-6">
+                      <label for="tncnSoNguoiPhuThuoc"
+                        >Số người phụ thuộc:</label
+                      >
+                      <input
+                        class="interface magenta-border text-dark"
+                        type="number"
+                        id="tncnSoNguoiPhuThuoc"
+                        placeholder="nhập số người phụ thuộc..."
+                      />
+                    </div>
+
+                    <div class="inputGroup col-12 mb-4">
+                      <label for="tongThuNhapNam">Tổng thu nhập năm:</label>
+                      <input
+                        class="interface magenta-border red fw-bold"
+                        type="number"
+                        id="tongThuNhapNam"
+                        placeholder="nhập tổng thu nhập năm..."
+                      />
+                    </div>
+
+                    <div class="buttons">
+                      <button
+                        type="button"
+                        class="interface magenta-bg text-light border-0"
+                        id="btnTinhTienThue"
+                      >
+                        Tính tiền thuế
+                      </button>
+                      <button
+                        type="reset"
+                        class="interface magenta-bg text-light border-0"
+                        id="btnXoaFormBaiTap3"
+                      >
+                        Xóa form
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
 
             <!-- tab#4 -->
             <div
               class="tab-pane fade"
-              id="v-pills-settings"
+              id="v-pills-baitap4"
               role="tabpanel"
-              aria-labelledby="v-pills-settings-tab"
+              aria-labelledby="v-pills-baitap4-tab"
               tabindex="0"
             >
-              Bài tập 4
+              <div class="container py-3">
+                <h3 class="text-center py-2 interface carrot">
+                  Tính thuế Cáp internet
+                </h3>
+                <form action="" id="frmBaiTap4">
+                  <div class="row">
+                    <div class="col-12 mb-4">
+                      <div class="row">
+                        <p class="col-4 m-0">Chọn loại Khách hàng:</p>
+                        <div class="col-4">
+                          <input
+                            class="form-check-input interface magenta-bg"
+                            type="radio"
+                            name="loaiKhachHang"
+                            id="khCaNhan"
+                          />
+                          <label
+                            class="form-check-label interface magenta"
+                            for="khCaNhan"
+                          >
+                            Nhà dân
+                          </label>
+                        </div>
+
+                        <div class="col-4">
+                          <input
+                            class="form-check-input interface magenta-bg"
+                            type="radio"
+                            name="loaiKhachHang"
+                            id="khDoanhNghiep"
+                          />
+                          <label
+                            class="form-check-label interface magenta"
+                            for="khDoanhNghiep"
+                          >
+                            Doanh nghiệp
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="inputGroup col-md-6">
+                      <label for="capMaKhachHang"
+                        >Mã Khách hàng:
+                        <input
+                          class="interface carrot-border text-dark"
+                          type="text"
+                          id="capMaKhachHang"
+                          placeholder="nhập mã khách hàng..."
+                      /></label>
+                    </div>
+
+                    <div class="inputGroup col-md-6">
+                      <label for="capTenKhachHang"
+                        >Tên khách hàng/Tên Cty:
+                        <input
+                          class="interface carrot-border text-dark"
+                          type="text"
+                          id="capTenKhachHang"
+                          placeholder="nhập tên khách hàng..."
+                      /></label>
+                    </div>
+
+                    <div class="inputGroup col-md-6">
+                      <label for="capSoKenhCC"
+                        >Số kênh cao cấp:
+                        <input
+                          class="interface carrot-border text-dark"
+                          type="number"
+                          id="capSoKenhCC"
+                          placeholder="nhập số kênh thuê..."
+                      /></label>
+                    </div>
+
+                    <div class="inputGroup col-md-6">
+                      <label for="capSoKetNoi"
+                        >Số kết nối:
+                        <input
+                          class="interface carrot-border text-dark"
+                          type="number"
+                          id="capSoKetNoi"
+                          placeholder="nhập số kết nối..."
+                          disabled
+                      /></label>
+                    </div>
+
+                    <div class="buttons">
+                      <button
+                        type="button"
+                        class="interface carrot-bg text-light border-0"
+                        id="btnTinhTienCap"
+                      >
+                        Tính tiền cáp
+                      </button>
+                      <button
+                        type="reset"
+                        class="interface carrot-bg text-light border-0"
+                        id="btnXoaFormBaiTap4"
+                      >
+                        Xóa form
+                      </button>
+                    </div>
+                  </div>
+                  <!-- eof .row -->
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -248,13 +504,28 @@
         <div
           class="col-lg-4 col-md-5 rightSide d-md-flex justify-content-md-center align-items-md-center"
         >
+          <div class="ketQua" id="rsBai1">
+            <h4 class="interface red red-border">
+              Bạn đã thi rớt, vì có điểm bằng 0
+            </h4>
+            <p class="text-center mt-5">
+              Tổng điểm các môn: 20 điểm <br />
+              Tổng điểm ưu tiên: 3.5 diểm <br />
+              <strong>Điểm tổng kết: 23.5 điểm</strong><br />
+              Điểm chuẩn: 28 điếm
+            </p>
+          </div>
           <div class="inBill">
             <table id="billTienDien" class="">
               <thead>
                 <tr>
                   <td colspan="4" class="px-2">
-                    <h3 class="text-center m-0 py-3">HÓA ĐƠN TIỀN ĐIỆN</h3>
-                    <p>
+                    <h3 class="text-center m-0 py-3">
+                      HÓA ĐƠN TIỀN ĐIỆN <br />
+                      <small id="dateBill"></small>
+                    </h3>
+
+                    <p id="billCusInfo">
                       - Khách hàng: <strong>XXX</strong> - Điện thoại:
                       <strong>xxx xxx xxx</strong><br />
                       - Địa chỉ: xxxxxxxxxxxxx<br />
@@ -272,7 +543,7 @@
                 </tr>
               </thead>
 
-              <tbody id="billBodyTbl">
+              <tbody id="billBodyTblBai1">
                 <tr>
                   <td>Bậc 1: từ 0 - 50 <small>kwh</small></td>
                   <td>xxx <small>kwh</small></td>
@@ -328,6 +599,23 @@
               </tfoot>
             </table>
           </div>
+
+          <div class="ketQua" id="rsBai3">
+            <p class="mb-3 text-center">
+              Chào bạn <strong>Công</strong>!<br />
+              Tổng tiền thuế TNCN phải đóng năm nay của bạn là:
+            </p>
+            <h4 class="text-center interface magenta magenta-border">
+              50.000.000 đ
+            </h4>
+            <p class="text-center mt-4">
+              Tổng thu nhập cả năm: 120.000.000 đ <br />
+              Tổng số người phụ thuộc: 3 người <br />
+              <strong>Tổng thu nhập chịu thuế: 50.000.000 đ</strong><br />
+            </p>
+          </div>
+
+          <div class="ketQua" id="rsBai4"></div>
         </div>
       </div>
     </div>
@@ -343,6 +631,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/gh/linhpn96/VNnum2words/src/index.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>
